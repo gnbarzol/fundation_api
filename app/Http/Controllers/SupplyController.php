@@ -34,11 +34,7 @@ class SupplyController extends Controller
     {
         
         // 'id_property' => 'required|unique:user,id',
-        $this->validate($request, [
-            'name' => 'required|min:3|max:100',
-            'id_property' => 'required',
-            'amount' => 'required'
-        ]);
+        $this->validateRequest($request);
 
         $input = $request->all();
         Supply::create($input);
@@ -52,11 +48,7 @@ class SupplyController extends Controller
     // PUT supplys
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required|min:3|max:100',
-            'id_property' => 'required',
-            'amount' => 'required'
-        ]);
+        $this->validateRequest($request);
 
         $input = $request->all();
 
@@ -78,6 +70,15 @@ class SupplyController extends Controller
         return response()->json([
             'res' => true,
             'message' => 'Registro eliminado correctamente',
+        ]);
+    }
+
+    private function validateRequest($request)
+    {
+        $this->validate($request, [
+            'name' => 'required|min:3|max:100',
+            'id_property' => 'required',
+            'amount' => 'required'
         ]);
     }
 }

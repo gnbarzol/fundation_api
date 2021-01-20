@@ -27,11 +27,7 @@ class OxigenController extends Controller
     // POST oxigens
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'capacity' => 'required',
-            'id_property' => 'required',
-            'amount' => 'required'
-        ]);
+        $this->validateRequest($request);
 
         $input = $request->all();
         Oxigen::create($input);
@@ -45,11 +41,7 @@ class OxigenController extends Controller
     // PUT oxigens
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'capacity' => 'required',
-            'id_property' => 'required',
-            'amount' => 'required'
-        ]);
+        $this->validateRequest($request);
 
         $input = $request->all();
 
@@ -71,6 +63,15 @@ class OxigenController extends Controller
         return response()->json([
             'res' => true,
             'message' => 'Registro eliminado correctamente',
+        ]);
+    }
+
+    private function validateRequest($request)
+    {
+        $this->validate($request, [
+            'capacity' => 'required',
+            'id_property' => 'required',
+            'amount' => 'required'
         ]);
     }
 }

@@ -16,7 +16,7 @@
 
 
 # Routes
-    url = localhost:8000
+    url = localhost:8000/api
 
 #### GET
     url/supplys
