@@ -1,3 +1,6 @@
+# Install dependencies
+`   composer install`
+
 # Run Server fundation_api
 `   php -S localhost:8000 -t public`
 
