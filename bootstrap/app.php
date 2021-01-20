@@ -80,6 +80,7 @@ $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
 ]);
 
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -94,6 +95,20 @@ $app->routeMiddleware([
 // $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+
+
+
+// Cors
+$app->register(Fruitcake\Cors\CorsServiceProvider::class);
+
+$app->configure('cors');
+
+$app->middleware([
+    // ...
+    Fruitcake\Cors\HandleCors::class,
+]);
+
+
 
 /*
 |--------------------------------------------------------------------------
