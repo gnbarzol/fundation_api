@@ -16,3 +16,10 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+// Oxigens
+$router->get('oxigens', ['as' => 'oxigens', 'uses' => 'OxigenController@index']);
+$router->get('oxigens/{id}', ['as' => 'oxigens.show', 'uses' => 'OxigenController@show']);
+$router->post('oxigens', ['as' => 'oxigens.store', 'uses' => 'OxigenController@store']);
+$router->put('oxigens/{id}', ['as' => 'oxigens.update', 'uses' => 'OxigenController@update']);
+$router->delete('oxigens/{id}', ['as' => 'oxigens.delete', 'uses' => 'OxigenController@delete']);
