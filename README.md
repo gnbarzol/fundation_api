@@ -1,22 +1,47 @@
-# Run Server Oxigen_api
-`php -S localhost:8000 -t public`
+# Run Server fundation_api
+`   php -S localhost:8000 -t public`
 
-# Lumen PHP Framework
+# Models
+#### Supply
+    'name',
+    'id_property',
+    'description',
+    'amount'
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+#### Oxigen
+    'id_property',
+    'description',
+    'capacity',
+    'amount'
 
-## Official Documentation
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+# Routes
+    url = localhost:8000
 
-## Contributing
+#### GET
+    url/supplys
+    url/supplys/write_id_supply
+    url/supplys?idProperty=write_id_proterty
+    url/supplys?name=write_name_supply
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    url/oxigens
+    url/oxigens/write_id_oxigen
+    url/oxigens?idProperty=write_id_proterty
 
-## Security Vulnerabilities
+#### POST
+    url/supplys   -> required => ['name','id_property','amount']
+    url/oxigens   -> required => ['capacity','id_property','amount']
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+#### PUT
+    url/supplys/write_id_supply   -> required the same post supply
+    url/oxigens/write_id_oxigen   -> required the same post oxigen
+
+#### DELETE
+    url/supplys/write_id_supply 
+    url/oxigens/write_id_oxigen 
+
+
 
 ## License
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
