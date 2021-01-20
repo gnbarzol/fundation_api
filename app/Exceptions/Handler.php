@@ -3,7 +3,9 @@
 namespace App\Exceptions;
 
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -49,6 +51,22 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if($exception instanceof ModelNotFoundException){
+            return response()->json(["res" => false, "error" => "Don't found model"], 400);
+        }
+
+        if($exception instanceof QueryException){
+            return response()->json(["res" => false, "message" => "Error query" , $exception->getMessage()], 500);
+        }
+
+        if($exception instanceof HttpException){
+            return response()->json(["res" => false, "message" => "Invalid route"], 404);
+        }
+
+        if($exception instanceof AuthenticationException){
+            return response()->json(["res" => false, "message" => "Unauthorized"], 401);
+        }
+
         return parent::render($request, $exception);
     }
 }
