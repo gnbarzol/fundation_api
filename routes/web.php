@@ -17,6 +17,13 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+// Supplys
+$router->get('supplys', ['as' => 'supplys', 'uses' => 'SupplyController@index']);
+$router->get('supplys/{id}', ['as' => 'supplys.show', 'uses' => 'SupplyController@show']);
+$router->post('supplys', ['as' => 'supplys.store', 'uses' => 'SupplyController@store']);
+$router->put('supplys/{id}', ['as' => 'supplys.update', 'uses' => 'SupplyController@update']);
+$router->delete('supplys/{id}', ['as' => 'supplys.delete', 'uses' => 'SupplyController@delete']);
+
 // Oxigens
 $router->get('oxigens', ['as' => 'oxigens', 'uses' => 'OxigenController@index']);
 $router->get('oxigens/{id}', ['as' => 'oxigens.show', 'uses' => 'OxigenController@show']);
