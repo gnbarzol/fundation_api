@@ -4,6 +4,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
     dirname(__DIR__)
+
 ))->bootstrap();
 
 date_default_timezone_set(env('APP_TIMEZONE', 'UTC'));
@@ -101,7 +102,7 @@ $app->register(App\Providers\AuthServiceProvider::class);
 // Cors
 $app->register(Fruitcake\Cors\CorsServiceProvider::class);
 
-$app->configure('cors');
+$app->configure("cors");
 
 $app->middleware([
     // ...
@@ -120,11 +121,9 @@ $app->middleware([
 | can respond to, as well as the controllers that may handle them.
 |
 */
-
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
-
 return $app;
