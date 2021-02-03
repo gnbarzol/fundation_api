@@ -35,6 +35,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('oxigens/{id}', ['as' => 'oxigens.show', 'uses' => 'OxigenController@show']);
     $router->post('oxigens', ['as' => 'oxigens.store', 'uses' => 'OxigenController@store']);
 
+    // Solicitud
+    $router->get('solicitud', ['as' => 'solicitudes', 'uses' => 'SolicitudController@index']);
+    $router->post('solicitud', ['as' => 'solicitud.store', 'uses' => 'SolicitudController@store']);
+
 
     // Routes auth
     $router->group(['middleware' => 'auth'], function () use ($router) {
